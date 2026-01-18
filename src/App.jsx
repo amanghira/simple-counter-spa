@@ -1,14 +1,17 @@
 import { useState } from "react";
+import Counter from "./components/Counter";
+import Todo from "./components/Todo";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [page, setPage] = useState("counter");
 
   return (
     <div style={{ padding: "20px" }}>
-      <h2>Counter SPA</h2>
-      <p>Count: {count}</p>
-      <button onClick={() => setCount(count + 1)}>+</button>
-      <button onClick={() => setCount(count - 1)}>-</button>
+      <button onClick={() => setPage("counter")}>Counter</button>
+      <button onClick={() => setPage("todo")}>To-Do</button>
+
+      {page === "counter" && <Counter />}
+      {page === "todo" && <Todo />}
     </div>
   );
 }
